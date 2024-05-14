@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <!-- External CSS libraries -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Custom CSS styles -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        .container-fluid {
+            padding: 20px;
+        }
+        .card {
+            margin-bottom: 20px;
+        }
+        /* Add more custom styles as needed */
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Admin Dashboard</a>
+        <!-- Add more navigation items if needed -->
+    </nav>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="card">
+                    <div class="card-header">
+                        Sidebar
+                    </div>
+                    <div class="card-body">
+                        <a href="{% url 'logout' %}">Logout</a>
+                        <!-- Sidebar content -->
+                        <ul class="list-group">
+                            <li class="list-group-item"><a href="{% url 'admin_approval' %}">Approval</a></li>
+                            <li class="list-group-item"><a href="{% url 'view_shop_owners' %}">Shop Owners</a></li>
+                            <li class="list-group-item"><a href="{% url 'view_customers' %}">Customers</a></li>
+                            <!-- Add more sidebar links as needed -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="card">
+                    <div class="card-header">
+                        Content Area
+                    </div>
+                    <div class="card-body">
+                        <!-- Main content goes here -->
+                        <h1>Welcome to the Admin Dashboard</h1>
+                        <p>This is where you manage your website.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- External JavaScript libraries -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script>
+        // Add your custom JavaScript code here
+    </script>
+</body>
+</html>

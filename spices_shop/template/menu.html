@@ -1,0 +1,47 @@
+{% load static %}
+
+<div class="navbar">
+  <div class="logo">
+    <a href="index.html"><img src="{% static 'images/ekart_logo.png' %}" alt="logo" width="125px" /></a>
+  </div>
+  <nav>
+    <ul id="MenuItems">
+      <li><a href="{% url 'home' %}">Home</a></li>
+      <li><a href="{% url 'list_products' %}">Products</a></li>
+
+      {% if not user.is_authenticated %}
+      <li>
+        <select name="Account" id="account-dropdown" onchange="handleAccountChange()">
+          <option value="" selected disabled>Select Account</option>
+          <option value="admin">Admin</option>
+          <option value="shop_owner">Shop Owner</option>
+          <option value="customer">Customer</option>
+        </select>
+      </li>
+      {% else %}
+      <li><a href="{% url 'orders' %}">Orders</a></li>
+      <li><a href="{% url 'logout' %}">Logout</a></li>
+      {% endif %}
+    </ul>
+  </nav>
+  {% if user.is_authenticated %}
+  <a href="{% url 'cart' %}"><img src="{% static 'images/cart.png' %}" width="30px" height="30px" /></a>
+  {% endif %}
+  <img src="{% static 'images/menu.png' %}" class="menu-icon" onclick="menutoggle()" />
+</div>
+
+<script>
+  function handleAccountChange() {
+    var dropdown = document.getElementById("account-dropdown");
+    var selectedOption = dropdown.options[dropdown.selectedIndex].value;
+
+    // Redirect to the appropriate account page based on the selected option
+    if (selectedOption === "admin") {
+      window.location.href = "{% url 'admin_login' %}";
+    } else if (selectedOption === "shop_owner") {
+      window.location.href = "{% url 'login' %}";
+    } else if (selectedOption === "customer") {
+      window.location.href = "{% url 'customer_login' %}";
+    }
+  }
+</script>

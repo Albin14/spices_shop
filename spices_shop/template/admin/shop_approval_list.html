@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Shop Approval</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .shop-request {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .shop-name {
+            font-weight: bold;
+        }
+        .btn-container {
+            margin-top: 10px;
+        }
+        .btn {
+            cursor: pointer;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 3px;
+            color: #fff;
+            font-weight: bold;
+        }
+        .btn-approve {
+            background-color: green;
+        }
+        .btn-reject {
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Shop Approval Requests</h2>
+{% if unapproved_shops %}
+    <ul>
+        {% for shop in unapproved_shops %}
+            <li>
+                <h3>{{ shop.name }}</h3>
+                <p>Description: {{ shop.description }}</p>
+                <p>Category: {{ shop.category }}</p>
+                <p>Address: {{ shop.address }}</p>
+                <p>Contact Number: {{ shop.contact_number }}</p>
+                <p>Email: {{ shop.email }}</p>
+                <img src="{{ shop.shop_logo.url }}" alt="{{ shop.name }} Logo">
+                <form method="post" action="{% url 'approve_shop' shop.id %}">
+                    {% csrf_token %}
+                    <button type="submit">Approve</button>
+                </form>
+                <form method="post" action="{% url 'reject_shop' shop.id %}">
+                    {% csrf_token %}
+                    <button type="submit">Reject</button>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No unapproved shops</p>
+{% endif %}
+
+</body>
+</html>

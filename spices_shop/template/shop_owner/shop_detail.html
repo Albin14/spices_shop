@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ shop.name }}</title>
+</head>
+<body>
+  <h1>{{ shop.name }}</h1>
+  <p>Description: {{ shop.description }}</p>
+  <p>Category: {{ shop.category }}</p>
+  <p>Address: {{ shop.address }}</p>
+  <p>Contact Number: {{ shop.contact_number }}</p>
+  <p>Email: {{ shop.email }}</p>
+  <img src="{{ shop.shop_logo.url }}" alt="{{ shop.name }} Logo">
+  {% if shop.owner == request.user %}
+  <a href="{% url 'edit_shop' shop.id %}">Edit</a>
+  {% endif %}
+</body>
+</html>

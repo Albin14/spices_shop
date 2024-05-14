@@ -1,0 +1,125 @@
+<!-- templates/shop_owner/dashboard.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <!-- External CSS libraries -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Custom CSS styles -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .register-link {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .register-link a {
+            color: #007bff;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Shop Owner Dashboard</a>
+        <!-- Add more navigation items if needed -->
+    </nav>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="card">
+                    <div class="card-header">
+                       
+                    </div>
+                    <div class="card-body">
+                        {% if user.is_authenticated %}
+                            <p>Welcome, {{user.username}}</p>
+                            <a href="{% url 'logout' %}">Logout</a>
+                        {% endif %}
+                        <!-- Sidebar content -->
+                        <ul class="list-group">
+                            <li class="list-group-item"><a href="{% url 'shop_detail' %}">Shop Details</a></li>
+                            <li class="list-group-item"><a href="{% url 'add_product' %}">Add Product</a></li>
+                            <!-- Add more sidebar links as needed -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="card">
+                    <div class="card-header">
+                        
+                    </div>
+                    <div class="card-body">
+                        <!-- Main content goes here -->
+                        <h1>Welcome to the Shop Owner Dashboard</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+     <!-- External JavaScript libraries -->
+     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+     <!-- Custom JavaScript -->
+</body>
+
+</html>

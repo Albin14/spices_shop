@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Shop Owner Requests</title>
+</head>
+<body>
+    <h1>Manage Shop Owner Requests</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Shop Name</th>
+                <th>Owner Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for request in shop_owner_requests %}
+            <tr>
+                <td>{{ request.shop_name }}</td>
+                <td>{{ request.owner_name }}</td>
+                <td>{{ request.owner_email }}</td>
+                <td>{{ request.owner_phone }}</td>
+                <td>
+                    <form method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="request_id" value="{{ request.id }}">
+                        <button type="submit" name="grant">Grant</button>
+                        <button type="submit" name="revoke">Revoke</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
